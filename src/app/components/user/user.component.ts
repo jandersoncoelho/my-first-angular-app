@@ -1,10 +1,6 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 
-interface User {
-  id: string;
-  avatar: string;
-  name: string;
-}
+import { User } from './user.model'; // Corrected import path
 
 
 @Component({
