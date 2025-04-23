@@ -12,9 +12,7 @@ import { Task } from './task.model'; // Corrected import path
   styleUrl: './task.component.css'
 })
 export class TaskComponent {
-completeTask() {
-throw new Error('Method not implemented.');
-}
+
   @Input({ required: true }) task!: Task;
   @Output() complete = new EventEmitter<string>();
 
