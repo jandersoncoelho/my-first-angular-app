@@ -13,8 +13,8 @@
     }
   </ul>
   @if (selectedUser) {
-  <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name" />
+    <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name" />
   } @else {
-  <p id="fallback">Selecione um usuário para ver suas tarefas.</p>
+    <p id="fallback">Selecione um usuário para ver suas tarefas.</p>
   }
 </main>
