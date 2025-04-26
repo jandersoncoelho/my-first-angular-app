@@ -1,21 +1,20 @@
 import { Component, Input } from '@angular/core';
-import {TaskComponent} from "./task/task.component";
+import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from './new-task/new-task.component';
 
 // import { Task } from './task/task.model';
 // The TaskComponent is a standalone component that displays task details
-
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
   imports: [TaskComponent, NewTaskComponent],
   templateUrl: './tasks.component.html',
-  styleUrl: './tasks.component.css'
+  styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
-  @Input( {required: true} ) userId!: string;
-  @Input( {required: true} ) name!: string;
+  @Input({ required: true }) userId!: string;
+  @Input({ required: true }) name!: string;
   isAddingTask = false; // Flag to control the visibility of the task form
   // @Input( {required: true} ) summary!: string;
   // @Input( {required: true} ) dueDate!: string;
@@ -26,7 +25,7 @@ export class TasksComponent {
       userId: 'u1',
       title: 'Master Angular',
       summary:
-      'Learn all the basic and advanced features of Angular & how to apply them.',
+        'Learn all the basic and advanced features of Angular & how to apply them.',
       dueDate: '2025-12-31',
     },
     {
@@ -41,21 +40,33 @@ export class TasksComponent {
       userId: 'u3',
       title: 'Prepare issue template',
       summary:
-      'Prepare and describe an issue template which will help with project management',
+        'Prepare and describe an issue template which will help with project management',
       dueDate: '2024-06-15',
     },
-  ]
+  ];
   // private nextTaskId = 1;
+
   get selectedUserTasks() {
     return this.tasks.filter((task) => task.userId === this.userId);
   }
+
   onCompleteTask(taskId: string) {
     this.tasks = this.tasks.filter((task) => task.id !== taskId);
     console.log(`Task with ID ${taskId} completed and removed from the list.`);
   }
+
   onStartAddTask() {
-   this.isAddingTask = true;
+    this.isAddingTask = true;
   }
+  
+  onCancelAddTask() {
+    this.isAddingTask = false;
+  }
+
+  onSaveTask() {
+    console.log('Save button clicked in NewTaskComponent');
+  }
+
   // onAddTask() {
   //   const todayDate = new Date();
   //   const newTask: Task = {
