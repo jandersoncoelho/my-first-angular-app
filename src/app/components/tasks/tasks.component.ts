@@ -1,9 +1,8 @@
 import { Component, Input } from '@angular/core';
+
 import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from './new-task/new-task.component';
-
-// import { Task } from './task/task.model';
-// The TaskComponent is a standalone component that displays task details
+import { NewTaskData } from './task/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -13,12 +12,11 @@ import { NewTaskComponent } from './new-task/new-task.component';
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
+
   @Input({ required: true }) userId!: string;
   @Input({ required: true }) name!: string;
   isAddingTask = false; // Flag to control the visibility of the task form
-  // @Input( {required: true} ) summary!: string;
-  // @Input( {required: true} ) dueDate!: string;
-  // @Output() addTask = new EventEmitter<Task>();
+  // Sample task data for demonstration purposes
   tasks = [
     {
       id: 't1',
@@ -58,26 +56,23 @@ export class TasksComponent {
   onStartAddTask() {
     this.isAddingTask = true;
   }
-  
+
   onCancelAddTask() {
     this.isAddingTask = false;
   }
 
-  onSaveTask() {
-    console.log('Save button clicked in NewTaskComponent');
-  }
+  onAddTask(taskData: NewTaskData) {
+    const newTask = {
+      id: `t${this.tasks.length + 1}`, // Generate a new ID based on the current length of the tasks array
+      userId: this.userId,
+      title: taskData.title,
+      summary: taskData.summary,
+      dueDate: taskData.date,
+    };
+    this.tasks.unshift(newTask);
+    this.isAddingTask = false; // Hide the form after adding the task
+    console.log('New task added:', newTask);
 
-  // onAddTask() {
-  //   const todayDate = new Date();
-  //   const newTask: Task = {
-  //     id: 't' + this.nextTaskId++,
-  //     userId: this.userId,
-  //     title: 'Nova Tarefa',
-  //     summary: 'Inserir nova tarefa',
-  //     dueDate: todayDate.toISOString().split('T')[0], // Format date as YYYY-MM-DD
-  //     };
-  //   this.tasks.push(newTask);
-  //   this.addTask.emit(newTask);
-  //   console.log(`New task added: ${JSON.stringify(newTask)}`);
-  // }
+  }
 }
+
