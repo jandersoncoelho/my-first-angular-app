@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from './new-task/new-task.component';
-import { NewTaskData } from './task/task.model';
+import { type NewTaskData } from './task/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -12,7 +12,6 @@ import { NewTaskData } from './task/task.model';
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
-
   @Input({ required: true }) userId!: string;
   @Input({ required: true }) name!: string;
   isAddingTask = false; // Flag to control the visibility of the task form
@@ -72,7 +71,5 @@ export class TasksComponent {
     this.tasks.unshift(newTask);
     this.isAddingTask = false; // Hide the form after adding the task
     console.log('New task added:', newTask);
-
   }
 }
-
