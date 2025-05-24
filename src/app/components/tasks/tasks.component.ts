@@ -44,12 +44,11 @@ export class TasksComponent {
   // private nextTaskId = 1;
 
   get selectedUserTasks() {
-    return this.tasks.filter((task) => task.userId === this.userId);
+    return;
   }
 
   onCompleteTask(taskId: string) {
-    this.tasks = this.tasks.filter((task) => task.id !== taskId);
-    console.log(`Task with ID ${taskId} completed and removed from the list.`);
+    
   }
 
   onStartAddTask() {
@@ -60,16 +59,5 @@ export class TasksComponent {
     this.isAddingTask = false;
   }
 
-  onAddTask(taskData: NewTaskData) {
-    const newTask = {
-      id: `t${this.tasks.length + 1}`, // Generate a new ID based on the current length of the tasks array
-      userId: this.userId,
-      title: taskData.title,
-      summary: taskData.summary,
-      dueDate: taskData.date,
-    };
-    this.tasks.unshift(newTask);
-    this.isAddingTask = false; // Hide the form after adding the task
-    console.log('New task added:', newTask);
-  }
+  onAddTask(taskData: NewTaskData) {}
 }
