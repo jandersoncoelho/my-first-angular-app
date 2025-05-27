@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { NewTaskData } from './task/task.model';
+import { type NewTaskData } from './task/task.model';
 
+@Injectable({ providedIn: 'root' })
 export class TasksService {
   // Sample task data for demonstration purposes
   private tasks = [
@@ -28,7 +29,9 @@ export class TasksService {
       dueDate: '2024-06-15',
     },
   ];
+
   constructor() { }
+
   getUserTasks(userId: string) {
     return this.tasks.filter(task => task.userId === userId);
   }
@@ -41,6 +44,7 @@ export class TasksService {
       summary: taskData.summary,
       dueDate: taskData.date,
     };
+    this.tasks.unshift(newTask);
 
   }
 
