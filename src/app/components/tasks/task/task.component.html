@@ -3,11 +3,6 @@
     <h2>{{ task.title }}</h2>
     <time> {{ task.dueDate | date : "fullDate" : "" : "pt-BR" }}</time>
     <p>{{ task.summary }}</p>
-    <!--
-      1º argumento: formato (ex: 'short', 'medium', 'fullDate', etc.)
-      2º argumento: timezone (aqui deixamos vazio para usar a default)
-      3º argumento: locale (opcional, mas garantido como 'pt-BR')
-    -->
     <p class="actions">
       <button (click)="onCompleteTask()">Concluído</button>
     </p>

@@ -23,11 +23,6 @@ export class TasksComponent {
     return this.tasksService.getUserTasks(this.userId);
   }
 
-  onCompleteTask(taskId: string) {
-    this.tasksService.removeTask(taskId);
-    console.log(`Task with ID ${taskId} completed and removed from the list.`);
-  }
-
   onStartAddTask() {
     this.isAddingTask = true;
   }
@@ -35,5 +30,4 @@ export class TasksComponent {
   onCloseAddTask() {
     this.isAddingTask = false;
   }
-
 }
