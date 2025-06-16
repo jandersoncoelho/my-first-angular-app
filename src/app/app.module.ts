@@ -15,7 +15,7 @@ import { HeaderComponent } from './components/header.component';
 import { UserComponent } from './components/user/user.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { TaskComponent } from './components/tasks/task/task.component';
-import { SharedModule } from './shared/shared-module';
+import { CardComponent } from './shared/card/card.component';
 import { NewTaskComponent } from './components/tasks/new-task/new-task.component';
 
 @NgModule({
@@ -25,9 +25,13 @@ import { NewTaskComponent } from './components/tasks/new-task/new-task.component
     UserComponent,
     TasksComponent,
     TaskComponent,
+    CardComponent,
     NewTaskComponent,
   ],
   bootstrap: [AppComponent],
-  imports: [BrowserModule, FormsModule, SharedModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+  ],
 })
 export class AppModule {}
